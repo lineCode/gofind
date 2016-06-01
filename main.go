@@ -23,6 +23,9 @@ func main() {
 	counter := 0
 	found := 0
 	t := time.Now()
+	if regex == "" {
+		regex = flag.Arg(0)
+	}
 	re := regexp.MustCompile(regex)
 	setScanDir()
 	filepath.Walk(
@@ -40,6 +43,7 @@ func main() {
 	fmt.Println("Files gezählt:    ", counter)
 	fmt.Println("Files gefunden:   ", found)
 	fmt.Println("Time:             ", t1.Sub(t))
+	fmt.Println("Suchstring:       ", regex)
 }
 
 func setScanDir() {
